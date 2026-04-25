@@ -32,6 +32,26 @@ body { background: radial-gradient(circle at top, #0f172a, #020617); }
 
 <body>
 
+<!-- ================= BOOTING SCREEN ================= -->
+<div id="booting" class="fixed inset-0 bg-black text-green-400 font-mono z-[9999] flex flex-col justify-center items-center px-6">
+
+  <div class="w-full max-w-md space-y-2 text-sm">
+
+    <p>> Initializing system...</p>
+    <p>> Loading modules...</p>
+    <p>> Connecting to core server...</p>
+    <p>> Verifying data integrity...</p>
+
+    <p class="mt-4">> Status: <span id="boot-status">Booting...</span></p>
+
+    <div class="w-full h-2 bg-gray-800 mt-4 rounded">
+      <div id="boot-bar" class="h-2 bg-green-400 w-0 transition-all duration-300"></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ================= APP ================= -->
 <div id="app" class="text-white">
 
 <!-- NAVBAR -->
@@ -189,22 +209,50 @@ body { background: radial-gradient(circle at top, #0f172a, #020617); }
 
 <!-- CONTACT -->
 <section id="contact" class="py-20 text-center fade-up">
-
   <h2 class="text-3xl font-bold mb-4">Contact</h2>
   <p class="text-gray-400">email@example.com</p>
-
 </section>
 
 </div>
 
+<!-- ================= SCRIPT ================= -->
 <script>
 const { createApp } = Vue;
 
 createApp({
   data() { return { menu:false } },
   mounted() {
+
     lucide.createIcons();
 
+    // BOOTING
+    const boot = document.getElementById("booting");
+    const bar = document.getElementById("boot-bar");
+    const status = document.getElementById("boot-status");
+
+    let progress = 0;
+
+    const interval = setInterval(() => {
+      progress += 10;
+      bar.style.width = progress + "%";
+
+      if(progress === 40) status.innerText = "Loading modules...";
+      if(progress === 70) status.innerText = "Connecting server...";
+      if(progress === 90) status.innerText = "Finalizing...";
+
+      if(progress >= 100){
+        clearInterval(interval);
+        status.innerText = "System Ready";
+
+        setTimeout(() => {
+          boot.style.opacity = "0";
+          setTimeout(()=> boot.style.display="none",500);
+        }, 500);
+      }
+
+    }, 150);
+
+    // SCROLL ANIMATION
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if(entry.isIntersecting) entry.target.classList.add('show');
@@ -212,6 +260,7 @@ createApp({
     });
 
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
   }
 }).mount('#app');
 </script>
