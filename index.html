@@ -1,90 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SK Rani Aryani | Portfolio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SK Rani Aryani</title>
 
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-  <script src="https://unpkg.com/lucide@latest"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
 
-  <style>
-    html { scroll-behavior: smooth; }
-    body { background: #0A0F1C; }
+<style>
+body { background: radial-gradient(circle at top, #0f172a, #020617); }
 
-    .fade-up {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: all 0.8s ease;
-    }
-    .fade-up.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
+.glass {
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.05);
+}
 
-    .loader {
-      position: fixed;
-      inset: 0;
-      background: #0A0F1C;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-    }
-
-    .card {
-      background:#0A0F1C;
-      padding:20px;
-      border-radius:16px;
-      border:1px solid #1f2937;
-      transition:0.3s;
-    }
-    .card:hover {
-      border-color:#3b82f6;
-      transform:translateY(-5px);
-    }
-
-    .metric h3 {
-      font-size:28px;
-      color:#3b82f6;
-    }
-  </style>
+.fade-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 0.8s;
+}
+.fade-up.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
 </head>
 
 <body>
 
-<!-- LOADER -->
-<div id="loader" class="loader">
-  <div class="animate-spin rounded-full h-14 w-14 border-t-2 border-blue-500"></div>
-</div>
-
-<div id="app">
+<div id="app" class="text-white">
 
 <!-- NAVBAR -->
-<nav class="fixed w-full bg-[#0A0F1C]/80 backdrop-blur border-b border-gray-800 z-50">
-  <div class="max-w-6xl mx-auto flex justify-between items-center p-4">
-    
+<nav class="fixed w-full z-50 glass">
+  <div class="max-w-6xl mx-auto flex justify-between p-4 items-center">
     <h1 class="text-blue-400 font-bold flex items-center gap-2">
       <i data-lucide="shield"></i> SK
     </h1>
 
-    <!-- Desktop -->
-    <div class="hidden md:flex gap-6 text-sm text-white">
+    <div class="hidden md:flex gap-6 text-sm">
       <a href="#about">About</a>
       <a href="#skills">Skills</a>
       <a href="#experience">Experience</a>
       <a href="#contact">Contact</a>
     </div>
 
-    <!-- Mobile -->
-    <button @click="menu = !menu" class="md:hidden text-white">
+    <button @click="menu=!menu" class="md:hidden">
       <i data-lucide="menu"></i>
     </button>
   </div>
 
-  <!-- Mobile menu -->
-  <div v-if="menu" class="md:hidden bg-[#0A0F1C] px-4 pb-4 text-white space-y-2">
+  <div v-if="menu" class="md:hidden p-4 space-y-2 glass">
     <a href="#about" class="block">About</a>
     <a href="#skills" class="block">Skills</a>
     <a href="#experience" class="block">Experience</a>
@@ -93,117 +62,137 @@
 </nav>
 
 <!-- HERO -->
-<section class="h-screen flex flex-col justify-center items-center text-center px-4 text-white fade-up">
-  <h1 class="text-3xl md:text-6xl font-bold mb-2">SK Rani Aryani</h1>
+<section class="min-h-screen flex flex-col justify-center items-center text-center px-4 fade-up">
 
-  <p class="text-blue-400 mb-4">Command Center Administrator</p>
-
-  <p class="text-gray-400 max-w-md md:max-w-xl mb-6">
-    Monitoring banking systems, handling incidents, and managing operational documentation.
+  <p class="text-blue-400 mb-2 tracking-widest text-sm">
+    COMMAND CENTER
   </p>
 
-  <div class="flex flex-col md:flex-row gap-3">
-    <a href="#contact" class="bg-blue-500 px-6 py-3 rounded-xl">Contact</a>
-    <a href="/cv.pdf" class="border border-blue-500 px-6 py-3 rounded-xl">Download CV</a>
+  <h1 class="text-4xl md:text-7xl font-bold mb-4 leading-tight">
+    SK Rani Aryani
+  </h1>
+
+  <p class="text-gray-400 max-w-xl mb-8">
+    Monitoring critical banking systems, handling incidents,
+    and managing operational documentation with precision.
+  </p>
+
+  <div class="flex gap-4">
+    <a href="#contact" class="bg-blue-500 px-6 py-3 rounded-xl hover:scale-105 transition">
+      Contact
+    </a>
+    <a href="#" class="border border-blue-500 px-6 py-3 rounded-xl hover:bg-blue-500 transition">
+      CV
+    </a>
   </div>
+
 </section>
 
 <!-- ABOUT -->
-<section id="about" class="fade-up max-w-6xl mx-auto py-16 px-4 grid md:grid-cols-2 gap-10 items-center text-white">
+<section id="about" class="max-w-6xl mx-auto py-20 px-4 grid md:grid-cols-2 gap-12 items-center fade-up">
 
-  <div class="flex justify-center">
+  <div class="relative">
     <img src="IMG-20260411-WA0017.jpg"
-         class="w-48 md:w-72 rounded-2xl shadow-lg object-cover">
+         class="rounded-2xl w-full max-w-sm mx-auto shadow-2xl">
   </div>
 
   <div>
-    <h2 class="text-2xl md:text-3xl font-bold mb-4 flex items-center gap-2">
-      <i data-lucide="user"></i> About Me
-    </h2>
-
-    <p class="text-gray-400 leading-relaxed text-sm md:text-base">
-      Banking Command Center Administrator with strong experience in monitoring,
-      incident handling, and documentation. Known for accuracy, reliability,
-      and fast response in high-pressure environments.
+    <h2 class="text-3xl font-bold mb-4">About</h2>
+    <p class="text-gray-400 leading-relaxed">
+      Banking Command Center Administrator experienced in 24/7 monitoring,
+      incident response, and documentation handling.
+      Known for accuracy, reliability, and operating under pressure.
     </p>
   </div>
+
 </section>
 
 <!-- SKILLS -->
-<section id="skills" class="fade-up bg-[#0F172A] py-16 text-white">
+<section id="skills" class="py-20 fade-up">
+
   <div class="max-w-6xl mx-auto px-4">
 
-    <h2 class="text-2xl md:text-3xl font-bold text-center mb-10">Core Skills</h2>
+    <h2 class="text-3xl font-bold mb-10 text-center">Core Skills</h2>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div class="grid md:grid-cols-3 gap-6">
 
-      <div class="card">
+      <div class="glass p-6 rounded-xl hover:scale-105 transition">
         <i data-lucide="activity"></i>
-        <h3 class="mt-2 font-semibold">Monitoring</h3>
-        <p class="text-gray-400 text-sm">System monitoring & alerts</p>
+        <h3 class="mt-4 font-semibold">Monitoring</h3>
+        <p class="text-gray-400 text-sm mt-2">System monitoring & alert handling</p>
       </div>
 
-      <div class="card">
+      <div class="glass p-6 rounded-xl hover:scale-105 transition">
         <i data-lucide="alert-triangle"></i>
-        <h3 class="mt-2 font-semibold">Incident</h3>
-        <p class="text-gray-400 text-sm">Handling & escalation</p>
+        <h3 class="mt-4 font-semibold">Incident</h3>
+        <p class="text-gray-400 text-sm mt-2">Incident response & escalation</p>
       </div>
 
-      <div class="card">
+      <div class="glass p-6 rounded-xl hover:scale-105 transition">
         <i data-lucide="file-text"></i>
-        <h3 class="mt-2 font-semibold">Documentation</h3>
-        <p class="text-gray-400 text-sm">Reports & logs</p>
+        <h3 class="mt-4 font-semibold">Documentation</h3>
+        <p class="text-gray-400 text-sm mt-2">Reports & logs management</p>
       </div>
 
     </div>
+
   </div>
 </section>
 
 <!-- EXPERIENCE -->
-<section id="experience" class="fade-up py-16 max-w-4xl mx-auto px-4 text-white">
-  <h2 class="text-2xl md:text-3xl font-bold text-center mb-10">Experience</h2>
+<section id="experience" class="py-20 fade-up">
 
-  <div class="space-y-6">
+  <div class="max-w-4xl mx-auto px-4">
 
-    <div class="border-l-2 border-blue-500 pl-4">
-      <h3>Command Center Admin</h3>
-      <p class="text-gray-400 text-sm">2024 - Present</p>
-    </div>
+    <h2 class="text-3xl font-bold mb-10 text-center">Experience</h2>
 
-    <div class="border-l-2 border-gray-700 pl-4">
-      <h3>Operations Support</h3>
-      <p class="text-gray-400 text-sm">2023</p>
+    <div class="space-y-6">
+
+      <div class="glass p-6 rounded-xl">
+        <h3 class="font-semibold">Command Center Administrator</h3>
+        <p class="text-gray-400 text-sm">2024 - Present</p>
+      </div>
+
+      <div class="glass p-6 rounded-xl">
+        <h3 class="font-semibold">Operations Support</h3>
+        <p class="text-gray-400 text-sm">2023</p>
+      </div>
+
     </div>
 
   </div>
 </section>
 
 <!-- METRICS -->
-<section class="fade-up py-16 text-white text-center">
-  <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 px-4">
+<section class="py-20 text-center fade-up">
 
-    <div class="metric">
-      <h3>99.9%</h3>
-      <p class="text-gray-400 text-sm">Uptime</p>
+  <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-6 px-4">
+
+    <div class="glass p-6 rounded-xl">
+      <h3 class="text-3xl text-blue-400">99.9%</h3>
+      <p class="text-gray-400 text-sm">System Uptime</p>
     </div>
 
-    <div class="metric">
-      <h3>&lt;5 min</h3>
-      <p class="text-gray-400 text-sm">Response</p>
+    <div class="glass p-6 rounded-xl">
+      <h3 class="text-3xl text-blue-400">&lt;5 min</h3>
+      <p class="text-gray-400 text-sm">Response Time</p>
     </div>
 
-    <div class="metric">
-      <h3>100+</h3>
+    <div class="glass p-6 rounded-xl">
+      <h3 class="text-3xl text-blue-400">100+</h3>
       <p class="text-gray-400 text-sm">Incidents</p>
     </div>
 
   </div>
+
 </section>
 
 <!-- CONTACT -->
-<section id="contact" class="fade-up py-16 text-center text-white">
-  <h2 class="text-2xl md:text-3xl font-bold mb-4">Contact</h2>
+<section id="contact" class="py-20 text-center fade-up">
+
+  <h2 class="text-3xl font-bold mb-4">Contact</h2>
   <p class="text-gray-400">email@example.com</p>
+
 </section>
 
 </div>
@@ -212,21 +201,13 @@
 const { createApp } = Vue;
 
 createApp({
-  data() {
-    return { menu: false }
-  },
+  data() { return { menu:false } },
   mounted() {
     lucide.createIcons();
 
-    window.addEventListener('load', () => {
-      document.getElementById('loader').style.display = 'none';
-    });
-
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('show');
-        }
+        if(entry.isIntersecting) entry.target.classList.add('show');
       });
     });
 
