@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SK Portfolio</title>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Vue -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #0A0F1C;
+    }
+
+    /* Fade animation */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease;
+    }
+
+    .fade-up.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Loader */
+    .loader {
+      position: fixed;
+      inset: 0;
+      background: #0A0F1C;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 0.5s ease;
+    }
+
+    .loader.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- LOADER -->
+<div id="loader" class="loader">
+  <div class="animate-spin rounded-full h-16 w-16 border-t-2 border-blue-500"></div>
+</div>
+
+<div id="app">
+
+  <!-- NAVBAR -->
+  <nav class="fixed w-full bg-[#0A0F1C]/80 backdrop-blur border-b border-gray-800 z-50">
+    <div class="max-w-6xl mx-auto flex justify-between items-center p-4">
+      <h1 class="font-bold text-blue-400">SK</h1>
+      <div class="flex gap-6 text-sm text-white">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="h-screen flex flex-col justify-center items-center text-center px-4 text-white fade-up">
+    <h1 class="text-4xl md:text-6xl font-bold mb-4">
+      Banking Command Center Administrator
+    </h1>
+
+    <p class="text-gray-400 mb-6 max-w-xl">
+      24/7 Monitoring | Incident Response | System Operations
+    </p>
+
+    <div class="flex gap-4">
+      <a href="#contact" class="bg-blue-500 px-6 py-3 rounded-xl hover:scale-105 transition">
+        Contact Me
+      </a>
+      <a href="/cv.pdf" class="border border-blue-500 px-6 py-3 rounded-xl hover:bg-blue-500 transition">
+        Download CV
+      </a>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="fade-up max-w-6xl mx-auto py-20 px-4 grid md:grid-cols-2 gap-10 items-center text-white">
+    <div class="flex justify-center">
+      <img src="/profile.jpg" class="rounded-2xl w-72 shadow-lg hover:scale-105 transition duration-300">
+    </div>
+
+    <div>
+      <h2 class="text-3xl font-bold mb-4">About Me</h2>
+      <p class="text-gray-400 leading-relaxed">
+        Banking Command Center Administrator with experience in monitoring critical systems,
+        handling incidents, and ensuring system availability.
+      </p>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="fade-up bg-[#0F172A] py-20 text-white">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-10 text-center">Core Skills</h2>
+
+      <div class="grid md:grid-cols-3 gap-6">
+
+        <div class="bg-[#0A0F1C] p-6 rounded-2xl border border-gray-800 hover:border-blue-500 hover:-translate-y-2 transition">
+          <h3 class="text-xl font-semibold mb-4 text-blue-400">Monitoring</h3>
+          <ul class="text-gray-400 space-y-2">
+            <li>System Monitoring</li>
+            <li>Alert Handling</li>
+            <li>Log Analysis</li>
+          </ul>
+        </div>
+
+        <div class="bg-[#0A0F1C] p-6 rounded-2xl border border-gray-800 hover:border-blue-500 hover:-translate-y-2 transition">
+          <h3 class="text-xl font-semibold mb-4 text-blue-400">Incident</h3>
+          <ul class="text-gray-400 space-y-2">
+            <li>Incident Response</li>
+            <li>Escalation</li>
+            <li>Coordination</li>
+          </ul>
+        </div>
+
+        <div class="bg-[#0A0F1C] p-6 rounded-2xl border border-gray-800 hover:border-blue-500 hover:-translate-y-2 transition">
+          <h3 class="text-xl font-semibold mb-4 text-blue-400">Operations</h3>
+          <ul class="text-gray-400 space-y-2">
+            <li>Server Check</li>
+            <li>Batch Monitoring</li>
+            <li>Reporting</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" class="fade-up py-20 max-w-4xl mx-auto px-4 text-white">
+    <h2 class="text-3xl font-bold mb-10 text-center">Experience</h2>
+
+    <div class="space-y-6">
+
+      <div class="border-l-2 border-blue-500 pl-4">
+        <h3 class="font-semibold">Command Center Administrator</h3>
+        <p class="text-gray-400">2024 - Present</p>
+        <p class="text-gray-400">
+          Monitoring systems, handling incidents, ensuring uptime.
+        </p>
+      </div>
+
+      <div class="border-l-2 border-gray-700 pl-4">
+        <h3 class="font-semibold">Operations Support</h3>
+        <p class="text-gray-400">2023</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="fade-up bg-[#0F172A] py-20 text-center text-white">
+    <h2 class="text-3xl font-bold mb-6">Contact</h2>
+    <p class="text-gray-400 mb-2">email@example.com</p>
+    <p class="text-gray-400">LinkedIn | WhatsApp</p>
+  </section>
+
+</div>
+
+<script>
+const { createApp } = Vue;
+
+createApp({
+  mounted() {
+    // Loader hide
+    window.addEventListener('load', () => {
+      const loader = document.getElementById('loader');
+      setTimeout(() => {
+        loader.classList.add('hidden');
+      }, 800);
+    });
+
+    // Scroll animation
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('.fade-up').forEach(el => {
+      observer.observe(el);
+    });
+  }
+}).mount('#app');
+</script>
+
+</body>
+</html>
