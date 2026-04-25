@@ -5,13 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SK Rani Aryani | Portfolio</title>
 
-  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Vue -->
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-
-  <!-- Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
 
   <style>
@@ -36,11 +31,23 @@
       justify-content: center;
       align-items: center;
       z-index: 9999;
-      transition: opacity 0.5s ease;
     }
-    .loader.hidden {
-      opacity: 0;
-      pointer-events: none;
+
+    .card {
+      background:#0A0F1C;
+      padding:20px;
+      border-radius:16px;
+      border:1px solid #1f2937;
+      transition:0.3s;
+    }
+    .card:hover {
+      border-color:#3b82f6;
+      transform:translateY(-5px);
+    }
+
+    .metric h3 {
+      font-size:28px;
+      color:#3b82f6;
     }
   </style>
 </head>
@@ -49,208 +56,170 @@
 
 <!-- LOADER -->
 <div id="loader" class="loader">
-  <div class="flex flex-col items-center gap-4">
-    <div class="animate-spin rounded-full h-14 w-14 border-t-2 border-blue-500"></div>
-    <p class="text-gray-400 text-sm">Loading Portfolio...</p>
-  </div>
+  <div class="animate-spin rounded-full h-14 w-14 border-t-2 border-blue-500"></div>
 </div>
 
 <div id="app">
 
-  <!-- NAVBAR -->
-  <nav class="fixed w-full bg-[#0A0F1C]/80 backdrop-blur border-b border-gray-800 z-50">
-    <div class="max-w-6xl mx-auto flex justify-between items-center p-4">
-      <h1 class="font-bold text-blue-400 flex items-center gap-2">
-        <i data-lucide="shield"></i> SK
-      </h1>
-      <div class="flex gap-6 text-sm text-white">
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#responsibility">Responsibilities</a>
-        <a href="#experience">Experience</a>
-        <a href="#contact">Contact</a>
-      </div>
-    </div>
-  </nav>
-
-  <!-- HERO -->
-  <section class="h-screen flex flex-col justify-center items-center text-center px-4 text-white fade-up">
-    <h1 class="text-4xl md:text-6xl font-bold mb-2">
-      SK Rani Aryani
+<!-- NAVBAR -->
+<nav class="fixed w-full bg-[#0A0F1C]/80 backdrop-blur border-b border-gray-800 z-50">
+  <div class="max-w-6xl mx-auto flex justify-between items-center p-4">
+    
+    <h1 class="text-blue-400 font-bold flex items-center gap-2">
+      <i data-lucide="shield"></i> SK
     </h1>
 
-    <p class="text-blue-400 text-lg mb-4">
-      Banking Command Center Administrator
+    <!-- Desktop -->
+    <div class="hidden md:flex gap-6 text-sm text-white">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </div>
+
+    <!-- Mobile -->
+    <button @click="menu = !menu" class="md:hidden text-white">
+      <i data-lucide="menu"></i>
+    </button>
+  </div>
+
+  <!-- Mobile menu -->
+  <div v-if="menu" class="md:hidden bg-[#0A0F1C] px-4 pb-4 text-white space-y-2">
+    <a href="#about" class="block">About</a>
+    <a href="#skills" class="block">Skills</a>
+    <a href="#experience" class="block">Experience</a>
+    <a href="#contact" class="block">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="h-screen flex flex-col justify-center items-center text-center px-4 text-white fade-up">
+  <h1 class="text-3xl md:text-6xl font-bold mb-2">SK Rani Aryani</h1>
+
+  <p class="text-blue-400 mb-4">Command Center Administrator</p>
+
+  <p class="text-gray-400 max-w-md md:max-w-xl mb-6">
+    Monitoring banking systems, handling incidents, and managing operational documentation.
+  </p>
+
+  <div class="flex flex-col md:flex-row gap-3">
+    <a href="#contact" class="bg-blue-500 px-6 py-3 rounded-xl">Contact</a>
+    <a href="/cv.pdf" class="border border-blue-500 px-6 py-3 rounded-xl">Download CV</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="fade-up max-w-6xl mx-auto py-16 px-4 grid md:grid-cols-2 gap-10 items-center text-white">
+
+  <div class="flex justify-center">
+    <img src="IMG-20260411-WA0017.jpg"
+         class="w-48 md:w-72 rounded-2xl shadow-lg object-cover">
+  </div>
+
+  <div>
+    <h2 class="text-2xl md:text-3xl font-bold mb-4 flex items-center gap-2">
+      <i data-lucide="user"></i> About Me
+    </h2>
+
+    <p class="text-gray-400 leading-relaxed text-sm md:text-base">
+      Banking Command Center Administrator with strong experience in monitoring,
+      incident handling, and documentation. Known for accuracy, reliability,
+      and fast response in high-pressure environments.
     </p>
+  </div>
+</section>
 
-    <p class="text-gray-400 mb-6 max-w-xl">
-      Ensuring system stability, handling critical incidents, and managing operational documentation
-      in high-availability banking environments.
-    </p>
+<!-- SKILLS -->
+<section id="skills" class="fade-up bg-[#0F172A] py-16 text-white">
+  <div class="max-w-6xl mx-auto px-4">
 
-    <div class="flex gap-4">
-      <a href="#contact" class="bg-blue-500 px-6 py-3 rounded-xl hover:scale-105 transition flex items-center gap-2">
-        <i data-lucide="mail"></i> Contact
-      </a>
-      <a href="/cv.pdf" class="border border-blue-500 px-6 py-3 rounded-xl hover:bg-blue-500 transition flex items-center gap-2">
-        <i data-lucide="download"></i> CV
-      </a>
-    </div>
-  </section>
+    <h2 class="text-2xl md:text-3xl font-bold text-center mb-10">Core Skills</h2>
 
-  <!-- ABOUT -->
-  <section id="about" class="fade-up max-w-6xl mx-auto py-20 px-4 grid md:grid-cols-2 gap-10 items-center text-white">
-    <div class="flex justify-center">
-      <img src="IMG-20260411-WA0017.jpg" class="rounded-2xl w-72 shadow-lg hover:scale-105 transition">
-    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
-    <div>
-      <h2 class="text-3xl font-bold mb-4 flex items-center gap-2">
-        <i data-lucide="user"></i> About Me
-      </h2>
-
-      <p class="text-gray-400 leading-relaxed">
-        Banking Command Center Administrator with experience in 24/7 monitoring, incident handling,
-        and operational documentation. Known for strong attention to detail, reliability, and the
-        ability to respond quickly in high-pressure environments.
-      </p>
-    </div>
-  </section>
-
-  <!-- SKILLS -->
-  <section id="skills" class="fade-up bg-[#0F172A] py-20 text-white">
-    <div class="max-w-6xl mx-auto px-4">
-      <h2 class="text-3xl font-bold mb-10 text-center">Core Skills</h2>
-
-      <div class="grid md:grid-cols-3 gap-6">
-
-        <div class="card">
-          <i data-lucide="activity"></i>
-          <h3>Monitoring</h3>
-          <p>System monitoring, alert handling, log analysis</p>
-        </div>
-
-        <div class="card">
-          <i data-lucide="alert-triangle"></i>
-          <h3>Incident</h3>
-          <p>Incident response, escalation, coordination</p>
-        </div>
-
-        <div class="card">
-          <i data-lucide="file-text"></i>
-          <h3>Documentation</h3>
-          <p>Reports, logs, operational documentation</p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- RESPONSIBILITIES -->
-  <section id="responsibility" class="fade-up py-20 text-white">
-    <div class="max-w-6xl mx-auto px-4">
-      <h2 class="text-3xl font-bold mb-10 text-center">Key Responsibilities</h2>
-
-      <div class="grid md:grid-cols-2 gap-6">
-
-        <div class="card">
-          <i data-lucide="server"></i>
-          <p>24/7 system monitoring</p>
-        </div>
-
-        <div class="card">
-          <i data-lucide="zap"></i>
-          <p>Incident handling & escalation</p>
-        </div>
-
-        <div class="card">
-          <i data-lucide="clipboard"></i>
-          <p>Documentation & reporting</p>
-        </div>
-
-        <div class="card">
-          <i data-lucide="users"></i>
-          <p>Team coordination</p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- EXPERIENCE -->
-  <section id="experience" class="fade-up py-20 max-w-4xl mx-auto px-4 text-white">
-    <h2 class="text-3xl font-bold mb-10 text-center">Experience</h2>
-
-    <div class="space-y-6">
-
-      <div class="border-l-2 border-blue-500 pl-4">
-        <h3>Command Center Administrator</h3>
-        <p class="text-gray-400">2024 - Present</p>
+      <div class="card">
+        <i data-lucide="activity"></i>
+        <h3 class="mt-2 font-semibold">Monitoring</h3>
+        <p class="text-gray-400 text-sm">System monitoring & alerts</p>
       </div>
 
-      <div class="border-l-2 border-gray-700 pl-4">
-        <h3>Operations Support</h3>
-        <p class="text-gray-400">2023</p>
+      <div class="card">
+        <i data-lucide="alert-triangle"></i>
+        <h3 class="mt-2 font-semibold">Incident</h3>
+        <p class="text-gray-400 text-sm">Handling & escalation</p>
+      </div>
+
+      <div class="card">
+        <i data-lucide="file-text"></i>
+        <h3 class="mt-2 font-semibold">Documentation</h3>
+        <p class="text-gray-400 text-sm">Reports & logs</p>
       </div>
 
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- METRICS -->
-  <section class="fade-up py-20 text-white text-center">
-    <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-6">
-      <div class="metric">
-        <h3>99.9%</h3>
-        <p>System Uptime</p>
-      </div>
-      <div class="metric">
-        <h3>&lt;5 min</h3>
-        <p>Response Time</p>
-      </div>
-      <div class="metric">
-        <h3>100+</h3>
-        <p>Incidents</p>
-      </div>
+<!-- EXPERIENCE -->
+<section id="experience" class="fade-up py-16 max-w-4xl mx-auto px-4 text-white">
+  <h2 class="text-2xl md:text-3xl font-bold text-center mb-10">Experience</h2>
+
+  <div class="space-y-6">
+
+    <div class="border-l-2 border-blue-500 pl-4">
+      <h3>Command Center Admin</h3>
+      <p class="text-gray-400 text-sm">2024 - Present</p>
     </div>
-  </section>
 
-  <!-- CONTACT -->
-  <section id="contact" class="fade-up py-20 text-center text-white">
-    <h2 class="text-3xl font-bold mb-6">Contact</h2>
-    <p class="text-gray-400">email@example.com</p>
-  </section>
+    <div class="border-l-2 border-gray-700 pl-4">
+      <h3>Operations Support</h3>
+      <p class="text-gray-400 text-sm">2023</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- METRICS -->
+<section class="fade-up py-16 text-white text-center">
+  <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 px-4">
+
+    <div class="metric">
+      <h3>99.9%</h3>
+      <p class="text-gray-400 text-sm">Uptime</p>
+    </div>
+
+    <div class="metric">
+      <h3>&lt;5 min</h3>
+      <p class="text-gray-400 text-sm">Response</p>
+    </div>
+
+    <div class="metric">
+      <h3>100+</h3>
+      <p class="text-gray-400 text-sm">Incidents</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="fade-up py-16 text-center text-white">
+  <h2 class="text-2xl md:text-3xl font-bold mb-4">Contact</h2>
+  <p class="text-gray-400">email@example.com</p>
+</section>
 
 </div>
-
-<style>
-.card {
-  background:#0A0F1C;
-  padding:20px;
-  border-radius:16px;
-  border:1px solid #1f2937;
-  transition:0.3s;
-}
-.card:hover {
-  border-color:#3b82f6;
-  transform:translateY(-5px);
-}
-.metric h3 {
-  font-size:32px;
-  color:#3b82f6;
-}
-</style>
 
 <script>
 const { createApp } = Vue;
 
 createApp({
+  data() {
+    return { menu: false }
+  },
   mounted() {
     lucide.createIcons();
 
     window.addEventListener('load', () => {
-      setTimeout(() => {
-        document.getElementById('loader').classList.add('hidden');
-      }, 800);
+      document.getElementById('loader').style.display = 'none';
     });
 
     const observer = new IntersectionObserver(entries => {
@@ -259,11 +228,9 @@ createApp({
           entry.target.classList.add('show');
         }
       });
-    }, { threshold: 0.2 });
-
-    document.querySelectorAll('.fade-up').forEach(el => {
-      observer.observe(el);
     });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
   }
 }).mount('#app');
 </script>
